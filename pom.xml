@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <name>Conseillers-models</name>
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- the basics -->
+  <groupId>ch.emf.info</groupId>
+  <artifactId>conseillers-models</artifactId>
+  <version>1.0.1</version>
+  <packaging>jar</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <!-- additional repository -->
+  <repositories>
+    <repository>
+      <id>emfinfo</id>
+      <name>emfinfo.github.io</name>
+      <url>http://emfinfo.github.io/javalibs/releases</url>
+    </repository>
+  </repositories>
+
+  <!-- dependencies -->
+  <dependencies>
+
+    <!-- dependencies for compile -->
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>persistence-api</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.8.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.8.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.emf.info</groupId>
+      <artifactId>basiclib</artifactId>
+      <version>1.0.5</version>
+    </dependency>
+
+  </dependencies>
+
+  <!-- build settings -->
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.0.0</version>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <tags>
+            <tag>
+              <name>tagvalue</name>
+            </tag>
+            <tag>
+              <name>composed</name>
+            </tag>
+            <tag>
+              <name>has</name>
+            </tag>
+            <tag>
+              <name>depend</name>
+            </tag>
+            <tag>
+              <name>hidden</name>
+            </tag>
+            <tag>
+              <name>stereotype</name>
+            </tag>
+            <tag>
+              <name>match</name>
+            </tag>
+            <tag>
+              <name>opt</name>
+            </tag>
+            <tag>
+              <name>view</name>
+            </tag>
+            <tag>
+              <name>note</name>
+            </tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.2</version>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+      </plugin>
+
+      <plugin>
+        <groupId>net.ju-n.maven.plugins</groupId>
+        <artifactId>checksum-maven-plugin</artifactId>
+        <version>1.3</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>files</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <fileSets>
+            <fileSet>
+              <directory>target</directory>
+              <includes>
+                <include>*.pom</include>
+                <include>*.jar</include>
+              </includes>
+            </fileSet>
+          </fileSets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
