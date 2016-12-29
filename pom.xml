@@ -29,9 +29,9 @@
 
     <!-- dependencies for compile -->
     <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
-      <version>1.0.2</version>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>javax.persistence</artifactId>
+      <version>2.1.1</version>
     </dependency>
 
     <dependency>
@@ -55,7 +55,7 @@
     <dependency>
       <groupId>ch.emf.info</groupId>
       <artifactId>basiclib</artifactId>
-      <version>1.0.5</version>
+      <version>1.0.7</version>
     </dependency>
 
   </dependencies>
