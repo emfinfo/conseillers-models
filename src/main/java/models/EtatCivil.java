@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package models;
 
 import ch.jcsinfo.system.InObject;
@@ -21,17 +26,17 @@ import lombok.EqualsAndHashCode;
  * @author jcstritt
  */
 @Entity
-@Table(name = "t_parti")
+@Table(name = "t_etat_civil")
 @Data
-@EqualsAndHashCode(of="pkParti", callSuper=false)
-public class Parti implements Serializable, Comparable<Parti> {
+@EqualsAndHashCode(of = "pkEtatCivil", callSuper = false)
+public class EtatCivil implements Serializable, Comparable<EtatCivil> {
   private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
-  @Column(name = "pkParti")
-  private Integer pkParti;
+  @Column(name = "pkEtatCivil")
+  private Integer pkEtatCivil;
 
   @Basic(optional = false)
   @Column(name = "abrev")
@@ -40,14 +45,14 @@ public class Parti implements Serializable, Comparable<Parti> {
   @Basic(optional = false)
   @Column(name = "nom")
   private String nom;
-
-  @OneToMany(mappedBy = "parti", cascade = CascadeType.DETACH)
-  @OrderBy("canton.abrev asc, nom ASC, prenom ASC")
+  
+  @OneToMany(mappedBy = "etatCivil", cascade = CascadeType.DETACH)
+  @OrderBy("canton.abrev,nom,prenom")
   private List<Conseiller> conseillers;
 
   @Override
   public String toString() {
-    return abrev;
+    return nom;
   }
 
   public String toString2() {
@@ -55,7 +60,7 @@ public class Parti implements Serializable, Comparable<Parti> {
   }
 
   @Override
-  public int compareTo(Parti o) {
+  public int compareTo(EtatCivil o) {
     return abrev.compareTo(o.getAbrev());
   }
 

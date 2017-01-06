@@ -1,12 +1,17 @@
 package models;
 
+import ch.jcsinfo.system.InObject;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +24,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_groupe")
 @Data
 @EqualsAndHashCode(of = "pkGroupe", callSuper = false)
-public class Groupe implements Serializable {
+public class Groupe implements Serializable, Comparable<Groupe> {
   private static final long serialVersionUID = 1L;
 
   @Id
@@ -29,16 +34,29 @@ public class Groupe implements Serializable {
   private Integer pkGroupe;
 
   @Basic(optional = false)
-  @Column(name = "nomGroupe")
-  private String nomGroupe;
+  @Column(name = "abrev")
+  private String abrev;
 
-//  @OneToMany(mappedBy = "groupe")
-//  @OrderBy("dateEntree ASC")  
-//  private List<Activite> activites;
+  @Basic(optional = false)
+  @Column(name = "nom")
+  private String nom;
+
+  @OneToMany(mappedBy = "groupe", cascade = CascadeType.DETACH)
+  @OrderBy("dateEntree ASC,conseiller.nom,conseiller.prenom")
+  private List<Activite> activites;
 
   @Override
   public String toString() {
-    return nomGroupe;
+    return abrev;
   }
-  
+
+  public String toString2() {
+    return InObject.fieldsToString(this);
+  }
+
+  @Override
+  public int compareTo(Groupe o) {
+    return abrev.compareTo(o.getAbrev());
+  }
+
 }

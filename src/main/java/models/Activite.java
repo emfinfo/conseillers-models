@@ -1,9 +1,10 @@
 package models;
 
-import helpers.CustomDateSerializer;
 import ch.jcsinfo.datetime.DateTimeLib;
+import ch.jcsinfo.system.InObject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import helpers.CustomDateSerializer;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -60,21 +61,18 @@ public class Activite implements Serializable {
   @ManyToOne
   private Groupe groupe;
 
-  @JoinColumn(name = "fkFonction", referencedColumnName = "pkFonction")
-  @ManyToOne
-  private Fonction fonction;
-
-  public Activite() {
-  }
-
   @Override
   public String toString() {
     return conseil
-      + ((groupe != null) ? ", " + groupe + " -" + fonction + "-" : "")
+      + ((groupe != null && !groupe.getAbrev().equals("?")) ? ", " + groupe : "")
       + ((dateEntree != null || dateSortie != null) ? ", (" : "")
       + ((dateEntree != null) ? DateTimeLib.dateToString(dateEntree) : "")
       + ((dateSortie != null) ? " - " + DateTimeLib.dateToString(dateSortie) : "")
       + ((dateEntree != null || dateSortie != null) ? ")" : "");
+  }
+
+  public String toString2() {
+    return InObject.fieldsToString(this);
   }
 
 }

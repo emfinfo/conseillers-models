@@ -1,7 +1,7 @@
 package models;
 
-import helpers.CustomDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import helpers.CustomDateSerializer;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
@@ -52,7 +53,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(of = "pkConseiller", callSuper = false)
 public class Conseiller implements Serializable {
-
   private static final long serialVersionUID = 1L;
 
   @Id
@@ -73,8 +73,18 @@ public class Conseiller implements Serializable {
   @Column(name = "sexe")
   private String sexe;
 
-  @Column(name = "origine")
-  private String origine;
+  @Lob
+  @Column(name = "mandats")
+  private String mandats;
+
+  @Column(name = "citoyennete")
+  private String citoyennete;
+
+  @Column(name = "lieuNaissance")
+  private String lieuNaissance;
+
+  @Column(name = "cantonNaissance")
+  private String cantonNaissance;
 
   @Column(name = "dateNaissance")
   @Temporal(TemporalType.DATE)
@@ -88,7 +98,11 @@ public class Conseiller implements Serializable {
 
   @Basic(optional = false)
   @Column(name = "actif")
-  private boolean actif;
+  private int actif;
+
+  @JoinColumn(name = "fkEtatCivil", referencedColumnName = "pkEtatCivil")
+  @ManyToOne(optional = false)
+  private EtatCivil etatCivil;
 
   @JoinColumn(name = "fkCanton", referencedColumnName = "pkCanton")
   @ManyToOne(optional = false)
@@ -110,5 +124,6 @@ public class Conseiller implements Serializable {
 //      + ((dateDeces != null) ? " - " + DateTimeLib.dateToString(dateDeces) : "") + ")"
 //      + ", actif=" + ((actif)?"OUI":"NON");
   }
+
 
 }
