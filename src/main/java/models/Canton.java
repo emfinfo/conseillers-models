@@ -1,6 +1,9 @@
 package models;
 
 import ch.jcsinfo.system.InObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -24,6 +27,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_canton")
 @Data
 @EqualsAndHashCode(of="abrev", callSuper=false)
+@JsonPropertyOrder({ "id", "abrev", "nom"})
 public class Canton implements Serializable, Comparable<Canton> {
   private static final long serialVersionUID = 1L;
 
@@ -31,6 +35,7 @@ public class Canton implements Serializable, Comparable<Canton> {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "pkCanton")
+  @JsonProperty("id")
   private Integer pkCanton;
 
   @Basic(optional = false)
@@ -43,6 +48,7 @@ public class Canton implements Serializable, Comparable<Canton> {
 
   @OneToMany(mappedBy = "canton", cascade = CascadeType.DETACH)
   @OrderBy("nom,prenom")
+  @JsonIgnore
   private List<Conseiller> conseillers;
 
   @Override

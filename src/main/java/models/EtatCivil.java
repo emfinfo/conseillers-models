@@ -6,6 +6,9 @@
 package models;
 
 import ch.jcsinfo.system.InObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -29,6 +32,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_etat_civil")
 @Data
 @EqualsAndHashCode(of = "pkEtatCivil", callSuper = false)
+@JsonPropertyOrder({ "id", "abrev", "nom"})
 public class EtatCivil implements Serializable, Comparable<EtatCivil> {
   private static final long serialVersionUID = 1L;
 
@@ -36,6 +40,7 @@ public class EtatCivil implements Serializable, Comparable<EtatCivil> {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "pkEtatCivil")
+  @JsonProperty("id")
   private Integer pkEtatCivil;
 
   @Basic(optional = false)
@@ -45,9 +50,10 @@ public class EtatCivil implements Serializable, Comparable<EtatCivil> {
   @Basic(optional = false)
   @Column(name = "nom")
   private String nom;
-  
+
   @OneToMany(mappedBy = "etatCivil", cascade = CascadeType.DETACH)
   @OrderBy("canton.abrev,nom,prenom")
+  @JsonIgnore
   private List<Conseiller> conseillers;
 
   @Override

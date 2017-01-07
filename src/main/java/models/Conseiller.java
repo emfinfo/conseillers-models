@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import helpers.CustomDateSerializer;
 import java.io.Serializable;
@@ -59,7 +60,22 @@ public class Conseiller implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "pkConseiller")
+  @JsonProperty("id")
   private Integer pkConseiller;
+
+  @Basic(optional = false)
+  @Column(name = "actif")
+  private boolean actif;
+
+  @Column(name = "dateNaissance")
+  @Temporal(TemporalType.DATE)
+  @JsonSerialize(using = CustomDateSerializer.class)
+  private Date dateNaissance;
+
+  @Column(name = "dateDeces")
+  @Temporal(TemporalType.DATE)
+  @JsonSerialize(using = CustomDateSerializer.class)
+  private Date dateDeces;
 
   @Basic(optional = false)
   @Column(name = "nom")
@@ -73,10 +89,6 @@ public class Conseiller implements Serializable {
   @Column(name = "sexe")
   private String sexe;
 
-  @Lob
-  @Column(name = "mandats")
-  private String mandats;
-
   @Column(name = "citoyennete")
   private String citoyennete;
 
@@ -86,19 +98,9 @@ public class Conseiller implements Serializable {
   @Column(name = "cantonNaissance")
   private String cantonNaissance;
 
-  @Column(name = "dateNaissance")
-  @Temporal(TemporalType.DATE)
-  @JsonSerialize(using = CustomDateSerializer.class)
-  private Date dateNaissance;
-
-  @Column(name = "dateDeces")
-  @Temporal(TemporalType.DATE)
-  @JsonSerialize(using = CustomDateSerializer.class)
-  private Date dateDeces;
-
-  @Basic(optional = false)
-  @Column(name = "actif")
-  private int actif;
+  @Lob
+  @Column(name = "mandats")
+  private String mandats;
 
   @JoinColumn(name = "fkEtatCivil", referencedColumnName = "pkEtatCivil")
   @ManyToOne(optional = false)
@@ -112,7 +114,7 @@ public class Conseiller implements Serializable {
   @ManyToOne(optional = false)
   private Parti parti;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "conseiller")
+  @OneToMany(mappedBy = "conseiller", orphanRemoval=true, cascade = {CascadeType.DETACH})
   @OrderBy("dateEntree ASC")
   private List<Activite> activites;
 
