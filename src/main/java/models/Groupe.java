@@ -51,6 +51,16 @@ public class Groupe implements Serializable, Comparable<Groupe> {
   @JsonIgnore
   private List<Activite> activites;
 
+  public Groupe() {
+  }
+
+  public Groupe(String abrev, String nom) {
+    this.pkGroupe = -1;
+    this.abrev = abrev;
+    this.nom = nom;
+    this.activites = null;
+  }
+
   @Override
   public String toString() {
     return abrev;

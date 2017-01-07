@@ -56,6 +56,16 @@ public class EtatCivil implements Serializable, Comparable<EtatCivil> {
   @JsonIgnore
   private List<Conseiller> conseillers;
 
+  public EtatCivil() {
+  }
+
+  public EtatCivil(String abrev, String nom) {
+    this.pkEtatCivil = -1;
+    this.abrev = abrev;
+    this.nom = nom;
+    this.conseillers = null;
+  }
+
   @Override
   public String toString() {
     return nom;

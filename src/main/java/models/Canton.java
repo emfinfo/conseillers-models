@@ -51,6 +51,16 @@ public class Canton implements Serializable, Comparable<Canton> {
   @JsonIgnore
   private List<Conseiller> conseillers;
 
+  public Canton() {
+  }
+
+  public Canton(String abrev, String nom) {
+    this.pkCanton = -1;
+    this.abrev = abrev;
+    this.nom = nom;
+    this.conseillers = null;
+  }
+
   @Override
   public String toString() {
     return abrev;

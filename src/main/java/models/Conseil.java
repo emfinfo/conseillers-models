@@ -51,6 +51,16 @@ public class Conseil implements Serializable, Comparable<Conseil> {
   @JsonIgnore
   private List<Activite> activites;
 
+  public Conseil() {
+  }
+
+  public Conseil(String abrev, String nom) {
+    this.pkConseil = -1;
+    this.abrev = abrev;
+    this.nom = nom;
+    this.activites = null;
+  }
+  
   @Override
   public String toString() {
     return abrev;

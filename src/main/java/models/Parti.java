@@ -51,6 +51,16 @@ public class Parti implements Serializable, Comparable<Parti> {
   @JsonIgnore
   private List<Conseiller> conseillers;
 
+  public Parti() {
+  }
+
+  public Parti(String abrev, String nom) {
+    this.pkParti = -1;
+    this.abrev = abrev;
+    this.nom = nom;
+    this.conseillers = null;
+  }
+
   @Override
   public String toString() {
     return abrev;
