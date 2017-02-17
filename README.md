@@ -1,4 +1,4 @@
-# conseillers-models 1.0.1 (november 2016)
+# conseillers-models 1.0.3 (janvier 2017)
 A Maven project to define JPA entity-beans for the Play "Conseillers" application.
 
 How to use in a Play build.sbt file :
@@ -7,6 +7,6 @@ resolvers += "Local Maven Repository" at "file:///" + Path.userHome.absolutePath
 
 libraryDependencies ++= Seq(
   javaJpa,
-  "ch.emf.info" % "conseillers-models" % "1.0.1",
+  "ch.emf.info" % "conseillers-models" % "1.0.3",
   ...
   )
