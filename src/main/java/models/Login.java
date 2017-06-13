@@ -2,6 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -38,7 +39,7 @@ public class Login implements Serializable {
   private String nom;
 
   @Column(name = "motDePasse")
-  @JsonIgnore
+  @JsonProperty(access = Access.WRITE_ONLY) // nouveau JCS 13.6.2017 au lieu de JsonIgnore
   private String motDePasse;
 
   @Column(name = "domaine")
