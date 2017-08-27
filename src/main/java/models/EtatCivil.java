@@ -6,6 +6,7 @@
 package models;
 
 import ch.jcsinfo.system.InObject;
+import ch.jcsinfo.util.ConvertLib;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -64,6 +65,10 @@ public class EtatCivil implements Serializable, Comparable<EtatCivil> {
     this.abrev = abrev;
     this.nom = nom;
     this.conseillers = null;
+  }
+
+  public String getAbrev(int len) {
+    return ConvertLib.fillString(len, ' ', abrev);
   }
 
   @Override
