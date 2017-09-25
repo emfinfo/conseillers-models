@@ -9,7 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
+ * Classe pour sérialiser correctement une date en JSON.
+ * 
  * @author jcstritt
  */
 public class CustomDateSerializer extends JsonSerializer<Date> {

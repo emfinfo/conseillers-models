@@ -21,6 +21,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
+ * Classe entité.
  *
  * @author jcstritt
  */
