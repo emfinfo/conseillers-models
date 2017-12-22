@@ -17,11 +17,11 @@
 
   <!-- additional repository -->
   <repositories>
-    <repository>
+    <!--    <repository>
       <id>emfinfo</id>
       <name>emfinfo.github.io</name>
       <url>http://emfinfo.github.io/javalibs/releases</url>
-    </repository>
+    </repository>-->
     <repository>
       <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
       <id>eclipselink</id>
@@ -67,7 +67,7 @@
     <dependency>
       <groupId>ch.emf.info</groupId>
       <artifactId>basiclib</artifactId>
-      <version>1.0.11</version>
+      <version>1.0.13</version>
     </dependency>
 
   </dependencies>
