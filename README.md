@@ -4,8 +4,6 @@ A Maven project to define JPA entity-beans for the Play "Conseillers" applicatio
 * New in release 1.3.0 (february 2018) :
   * New timestamp field for login
 
-library and the method AesUtil.encrypt(data)
-
 How to use in a Play build.sbt file :
 
 resolvers += "Local Maven Repository" at "file:///" + Path.userHome.absolutePath + "/.m2/repository"
