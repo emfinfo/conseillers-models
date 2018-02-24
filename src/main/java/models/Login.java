@@ -54,7 +54,7 @@ public class Login implements Serializable {
   private String motDePasse;
 
   @Basic(optional = false)
-  @Column(name = "loginTimestamp")
+  @Column(name = "timestamp")
   @Temporal(TemporalType.TIMESTAMP)
   @JsonIgnore
   private Date timestamp;
