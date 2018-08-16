@@ -6,7 +6,7 @@
   <!-- the basics -->
   <groupId>ch.emf.info</groupId>
   <artifactId>conseillers-models</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.8</version>
   <packaging>jar</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,11 +17,11 @@
 
   <!-- additional repository -->
   <repositories>
-    <!--    <repository>
+    <repository>
       <id>emfinfo</id>
       <name>emfinfo.github.io</name>
       <url>http://emfinfo.github.io/javalibs/releases</url>
-    </repository>-->
+    </repository>
     <repository>
       <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
       <id>eclipselink</id>
@@ -33,7 +33,7 @@
   <!-- dependencies -->
   <dependencies>
 
-    <!-- dependencies for compile 21.8.2017 -->
+    <!-- dependencies for compile -->
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>javax.persistence</artifactId>
@@ -49,7 +49,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.16.18</version>
+      <version>1.16.22</version>
     </dependency>
 
     <dependency>
@@ -67,7 +67,7 @@
     <dependency>
       <groupId>ch.emf.info</groupId>
       <artifactId>basiclib</artifactId>
-      <version>1.0.13</version>
+      <version>1.3.1</version>
     </dependency>
 
   </dependencies>
