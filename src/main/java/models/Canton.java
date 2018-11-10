@@ -38,7 +38,7 @@ public class Canton implements Serializable, Comparable<Canton> {
   @Basic(optional = false)
   @Column(name = "pkCanton")
   @JsonProperty("id")
-  private Integer pkCanton;
+  private Integer pk;
 
   @Basic(optional = false)
   @Column(name = "abrev")
@@ -57,7 +57,7 @@ public class Canton implements Serializable, Comparable<Canton> {
   }
 
   public Canton(String abrev, String nom) {
-    this.pkCanton = -1;
+    this.pk = -1;
     this.abrev = abrev;
     this.nom = nom;
     this.conseillers = null;

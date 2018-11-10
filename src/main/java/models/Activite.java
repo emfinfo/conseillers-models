@@ -29,7 +29,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "t_activite")
 @Data
-@EqualsAndHashCode(of = "pkActivite", callSuper = false)
+@EqualsAndHashCode(of = "pk", callSuper = false)
 public class Activite implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -37,7 +37,7 @@ public class Activite implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "pkActivite")
-  private Integer pkActivite;
+  private Integer pk;
 
   @Column(name = "dateEntree")
   @Temporal(TemporalType.DATE)

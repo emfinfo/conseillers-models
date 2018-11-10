@@ -28,7 +28,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "t_login")
 @Data
-@EqualsAndHashCode(of="pkLogin", callSuper=false)
+@EqualsAndHashCode(of="pk", callSuper=false)
 @JsonPropertyOrder({ "id", "nom", "domaine", "profil", "email", "initiales", "langue"})
 public class Login implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class Login implements Serializable {
   @Basic(optional = false)
   @Column(name = "pkLogin")
   @JsonProperty("id")
-  private Integer pkLogin;
+  private Integer pk;
 
   @Basic(optional = false)
   @Column(name = "nom")
@@ -53,12 +53,6 @@ public class Login implements Serializable {
   @JsonProperty(access = Access.WRITE_ONLY) // nouveau JCS 13.6.2017 au lieu de JsonIgnore
   private String motDePasse;
 
-  @Basic(optional = false)
-  @Column(name = "timestamp")
-  @Temporal(TemporalType.TIMESTAMP)
-  @JsonIgnore
-  private Date timestamp;
-
   @Column(name = "profil")
   private String profil;
 
@@ -71,15 +65,21 @@ public class Login implements Serializable {
   @Column(name = "langue")
   private String langue;
 
+  @Basic(optional = false)
+  @Column(name = "timestamp")
+  @Temporal(TemporalType.TIMESTAMP)
+  @JsonIgnore
+  private Date timestamp;
+
   public Login(String nom, String domaine, String motDePasse, String profil, String email, String initiales, String lang) {
-    this.pkLogin = 0;
+    this.pk = 0;
     this.nom = nom;
     this.domaine = domaine;
     this.motDePasse = motDePasse;
     this.profil = profil;
     this.email = email;
     this.initiales = initiales;
-    this.langue = langue;
+    this.langue = lang;
     this.timestamp = new Date(Instant.now().toEpochMilli());
   }
 

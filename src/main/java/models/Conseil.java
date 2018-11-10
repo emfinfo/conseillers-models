@@ -28,7 +28,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "t_conseil")
 @Data
-@EqualsAndHashCode(of="pkConseil", callSuper=false)
+@EqualsAndHashCode(of="pk", callSuper=false)
 @JsonPropertyOrder({ "id", "abrev", "nom"})
 public class Conseil implements Serializable, Comparable<Conseil> {
   private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class Conseil implements Serializable, Comparable<Conseil> {
   @Basic(optional = false)
   @Column(name = "pkConseil")
   @JsonProperty("id")
-  private Integer pkConseil;
+  private Integer pk;
 
   @Basic(optional = false)
   @Column(name = "abrev")
@@ -57,7 +57,7 @@ public class Conseil implements Serializable, Comparable<Conseil> {
   }
 
   public Conseil(String abrev, String nom) {
-    this.pkConseil = -1;
+    this.pk = -1;
     this.abrev = abrev;
     this.nom = nom;
     this.activites = null;

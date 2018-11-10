@@ -38,7 +38,7 @@ import lombok.EqualsAndHashCode;
 //    @ConstructorResult(
 //      targetClass = Conseiller.class,
 //      columns = {
-//        @ColumnResult(name = "pkConseiller"),
+//        @ColumnResult(name = "pk"),
 //        @ColumnResult(name = "nom"),
 //        @ColumnResult(name = "prenom"),
 //        @ColumnResult(name = "sexe"),
@@ -53,7 +53,7 @@ import lombok.EqualsAndHashCode;
 //)
 
 @Data
-@EqualsAndHashCode(of = "pkConseiller", callSuper = false)
+@EqualsAndHashCode(of = "pk", callSuper = false)
 public class Conseiller implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -62,7 +62,7 @@ public class Conseiller implements Serializable {
   @Basic(optional = false)
   @Column(name = "pkConseiller")
   @JsonProperty("id")
-  private Integer pkConseiller;
+  private Integer pk;
 
   @Basic(optional = false)
   @Column(name = "actif")

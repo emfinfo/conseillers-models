@@ -22,13 +22,13 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Classe entité.
- * 
+ *
  * @author jcstritt
  */
 @Entity
 @Table(name = "t_groupe")
 @Data
-@EqualsAndHashCode(of = "pkGroupe", callSuper = false)
+@EqualsAndHashCode(of = "pk", callSuper = false)
 @JsonPropertyOrder({ "id", "abrev", "nom"})
 public class Groupe implements Serializable, Comparable<Groupe> {
   private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class Groupe implements Serializable, Comparable<Groupe> {
   @Basic(optional = false)
   @Column(name = "pkGroupe")
   @JsonProperty("id")
-  private Integer pkGroupe;
+  private Integer pk;
 
   @Basic(optional = false)
   @Column(name = "abrev")
@@ -57,7 +57,7 @@ public class Groupe implements Serializable, Comparable<Groupe> {
   }
 
   public Groupe(String abrev, String nom) {
-    this.pkGroupe = -1;
+    this.pk = -1;
     this.abrev = abrev;
     this.nom = nom;
     this.activites = null;
