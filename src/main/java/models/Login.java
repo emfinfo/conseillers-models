@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,9 +13,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -65,11 +67,15 @@ public class Login implements Serializable {
   @Column(name = "langue")
   private String langue;
 
-  @Basic(optional = false)
   @Column(name = "timestamp")
   @Temporal(TemporalType.TIMESTAMP)
   @JsonIgnore
   private Date timestamp;
+
+  @Column(name = "version")
+  @Version
+  @JsonIgnore
+  private long version;
 
   public Login(String nom, String domaine, String motDePasse, String profil, String email, String initiales, String lang) {
     this.pk = 0;
@@ -80,12 +86,23 @@ public class Login implements Serializable {
     this.email = email;
     this.initiales = initiales;
     this.langue = lang;
-    this.timestamp = new Date(Instant.now().toEpochMilli());
   }
 
   public Login() {
     this("", "", "", null, null, null, null);
   }
+
+  @PrePersist
+  public void prePersist() {
+    version = 1;
+    timestamp = new Date();
+  }
+
+  @PreUpdate
+  public void preUpdate() {
+    timestamp = new Date();
+  }
+
 
   @Override
   public String toString() {
