@@ -27,11 +27,12 @@ import lombok.EqualsAndHashCode;
  *
  * @author jcstritt
  */
-@Entity
-@Table(name = "t_login")
 @Data
 @EqualsAndHashCode(of="pk", callSuper=false)
 @JsonPropertyOrder({ "id", "nom", "domaine", "profil", "email", "initiales", "langue"})
+
+@Entity
+@Table(name = "t_login")
 public class Login implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -89,7 +90,7 @@ public class Login implements Serializable {
   }
 
   public Login() {
-    this("", "", "", null, null, null, null);
+    this("", "", null, null, null, null, null);
   }
 
   @PrePersist

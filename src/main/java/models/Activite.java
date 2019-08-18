@@ -26,10 +26,11 @@ import lombok.EqualsAndHashCode;
  *
  * @author jcstritt
  */
-@Entity
-@Table(name = "t_activite")
 @Data
 @EqualsAndHashCode(of = "pk", callSuper = false)
+
+@Entity
+@Table(name = "t_activite")
 public class Activite implements Serializable {
   private static final long serialVersionUID = 1L;
 

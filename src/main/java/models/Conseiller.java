@@ -29,9 +29,12 @@ import lombok.EqualsAndHashCode;
  *
  * @author jcstritt
  */
+
+@Data
+@EqualsAndHashCode(of = "pk", callSuper = false)
+
 @Entity
 @Table(name = "t_conseiller")
-
 // pour appels getList avec du SQL natif
 //@SqlResultSetMapping(name = "ConseillerResult",
 //  classes = {
@@ -52,8 +55,6 @@ import lombok.EqualsAndHashCode;
 //  }
 //)
 
-@Data
-@EqualsAndHashCode(of = "pk", callSuper = false)
 public class Conseiller implements Serializable {
   private static final long serialVersionUID = 1L;
 

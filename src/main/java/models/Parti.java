@@ -25,11 +25,12 @@ import lombok.EqualsAndHashCode;
  *
  * @author jcstritt
  */
-@Entity
-@Table(name = "t_parti")
 @Data
 @EqualsAndHashCode(of="pk", callSuper=false)
 @JsonPropertyOrder({ "id", "abrev", "nom"})
+
+@Entity
+@Table(name = "t_parti")
 public class Parti implements Serializable, Comparable<Parti> {
   private static final long serialVersionUID = 1L;
 

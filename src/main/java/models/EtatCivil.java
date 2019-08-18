@@ -25,11 +25,12 @@ import lombok.EqualsAndHashCode;
  *
  * @author jcstritt
  */
-@Entity
-@Table(name = "t_etat_civil")
 @Data
 @EqualsAndHashCode(of = "pk", callSuper = false)
 @JsonPropertyOrder({ "id", "abrev", "nom"})
+
+@Entity
+@Table(name = "t_etat_civil")
 public class EtatCivil implements Serializable, Comparable<EtatCivil> {
   private static final long serialVersionUID = 1L;
 
