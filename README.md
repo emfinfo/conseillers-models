@@ -7,6 +7,6 @@ resolvers += "Local Maven Repository" at "file:///" + Path.userHome.absolutePath
 
 libraryDependencies ++= Seq(
   javaJpa,
-  "ch.emf.info" % "conseillers-models" % "1.0.12",
+  "ch.jcwinfo.models" % "conseillers-models" % "1.0.12",
   ...
   )
