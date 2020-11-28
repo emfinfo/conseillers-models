@@ -7,7 +7,7 @@
   <description>Models classes for the Conseillers play-framework application.</description>
   <url></url>
   
-    <!-- project organization -->
+  <!-- project organization -->
   <organization>
     <name>JCSINFO</name>
     <url>https://www.jcsinfo.ch</url>
@@ -45,7 +45,6 @@
   <!-- dependencies -->
   <dependencies>
 
-    <!-- dependencies for compile -->
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>javax.persistence</artifactId>
